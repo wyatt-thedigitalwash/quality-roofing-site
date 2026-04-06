@@ -36,7 +36,7 @@ function Hero() {
         className="object-cover"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/35 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/90 md:to-[#252525]/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#252525] via-[#252525]/90 to-[#252525]/45 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/90 md:to-[#252525]/45" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl text-center md:text-left">
