@@ -108,9 +108,9 @@ function ServicePillars() {
                 i < 2 ? 'border-b border-[#B6B5B3]/20 lg:border-b-0' : ''
               }`}
             >
-              <span className="relative text-sm font-normal uppercase tracking-[0.2em] text-white group-hover:text-[#154D29] transition-colors duration-300 sm:text-base lg:text-lg font-[family-name:var(--font-dm-serif)]">
+              <span className="relative text-sm font-normal uppercase tracking-[0.2em] text-white group-hover:text-white/80 transition-colors duration-300 sm:text-base lg:text-lg font-[family-name:var(--font-dm-serif)]">
                 {pillar.name}
-                <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-[#154D29] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-white/90 transition-all duration-300 group-hover:w-full" />
               </span>
             </Link>
           ))}
