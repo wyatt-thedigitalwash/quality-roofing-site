@@ -1,9 +1,15 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { outlineButton } from '@/lib/buttons';
+import type { Faq } from '@/lib/faqs';
+import FaqSection from '@/components/FaqSection';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { useScrollReveal } from '@/lib/animations';
+import PageHeroBackground from '@/components/PageHeroBackground';
+import HeroCta from '@/components/HeroCta';
 
 const anim = (visible: boolean) =>
   `transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -16,24 +22,31 @@ const anim = (visible: boolean) =>
 export interface PillarService {
   name: string;
   description: string;
+  href?: string;
 }
 
 export interface PillarProject {
   label: string;
   image: string;
+  href?: string;
 }
 
 export interface PillarPageProps {
+  heroImage: string;
+  heroImageAlt: string;
   heroHeadline: string;
   heroSubtext: string;
   overviewImage: string;
   overviewImageAlt: string;
+  overviewHeadline: string;
   overviewParagraphs: string[];
+  afterOverview?: ReactNode;
   services: PillarService[];
   servicesHeadline: string;
   projectsHeadline: string;
   projects: PillarProject[];
   ctaHeadline: string;
+  faqs?: Faq[];
 }
 
 /* ──────────────────────────────────────────────
@@ -42,18 +55,22 @@ export interface PillarPageProps {
 function PageHero({
   headline,
   subtext,
+  image,
+  imageAlt,
 }: {
   headline: string;
   subtext: string;
+  image: string;
+  imageAlt: string;
 }) {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
+    <section aria-label={headline}
       ref={ref}
-      className="relative flex items-center min-h-[55vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/70 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/95 md:to-[#252525]/80" />
+      <PageHeroBackground src={image} alt={imageAlt} />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
@@ -64,10 +81,16 @@ function PageHero({
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
           >
             {subtext}
           </p>
+          <div
+            style={isVisible ? { transitionDelay: '300ms' } : undefined}
+            className={`mt-8 ${anim(isVisible)}`}
+          >
+            <HeroCta />
+          </div>
         </div>
       </div>
     </section>
@@ -77,19 +100,19 @@ function PageHero({
 /* ──────────────────────────────────────────────
    SECTION 2 -- OVERVIEW
    ────────────────────────────────────────────── */
-function Overview({ paragraphs, image, imageAlt }: { paragraphs: string[]; image: string; imageAlt: string }) {
+function Overview({ headline, paragraphs, image, imageAlt }: { headline: string; paragraphs: string[]; image: string; imageAlt: string }) {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label={headline} className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-5">
           <div className="lg:col-span-3">
-            <div className="border-l-2 border-[#154D29] pl-6">
+            <div>
               <h2
-                className={`text-3xl font-normal text-[#252525] sm:text-4xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+                className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
               >
-                Overview
+                {headline}
               </h2>
               <div
                 style={isVisible ? { transitionDelay: '150ms' } : undefined}
@@ -99,16 +122,14 @@ function Overview({ paragraphs, image, imageAlt }: { paragraphs: string[]; image
                   <p key={i}>{p}</p>
                 ))}
               </div>
-              <Link
-                href="/contact"
+              <div
                 style={isVisible ? { transitionDelay: '300ms' } : undefined}
-                className={`group/arrow mt-8 inline-flex items-center gap-1 text-sm font-bold text-[#154D29] hover:underline font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+                className={`mt-8 ${anim(isVisible)}`}
               >
-                Request an Estimate
-                <span className="inline-block transition-transform duration-300 group-hover/arrow:translate-x-1">
-                  &rarr;
-                </span>
-              </Link>
+                <Link href="/contact" className={outlineButton}>
+                  Request an Estimate
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -121,6 +142,7 @@ function Overview({ paragraphs, image, imageAlt }: { paragraphs: string[]; image
                 src={image}
                 alt={imageAlt}
                 fill
+                sizes="(max-width: 640px) 100vw, 40vw"
                 className="object-cover"
               />
             </div>
@@ -147,10 +169,10 @@ function ServicesList({
   const right = services.slice(mid);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label={headline} className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <h2
-          className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+          className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
         >
           {headline}
         </h2>
@@ -170,9 +192,15 @@ function ServicesList({
                 }`}
               >
                 <span className="block text-base font-semibold text-[#252525] font-[family-name:var(--font-dm-sans)]">
-                  {s.name}
+                  {s.href ? (
+                    <Link href={s.href} className="tap-target text-[#154D29] underline underline-offset-2 hover:no-underline">
+                      {s.name}
+                    </Link>
+                  ) : (
+                    s.name
+                  )}
                 </span>
-                <span className="mt-1 block text-sm text-[#252525]/60 font-[family-name:var(--font-dm-sans)]">
+                <span className="mt-1 block text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
                   {s.description}
                 </span>
               </li>
@@ -192,9 +220,15 @@ function ServicesList({
                 }`}
               >
                 <span className="block text-base font-semibold text-[#252525] font-[family-name:var(--font-dm-sans)]">
-                  {s.name}
+                  {s.href ? (
+                    <Link href={s.href} className="tap-target text-[#154D29] underline underline-offset-2 hover:no-underline">
+                      {s.name}
+                    </Link>
+                  ) : (
+                    s.name
+                  )}
                 </span>
-                <span className="mt-1 block text-sm text-[#252525]/60 font-[family-name:var(--font-dm-sans)]">
+                <span className="mt-1 block text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
                   {s.description}
                 </span>
               </li>
@@ -219,10 +253,10 @@ function FeaturedProjects({
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 pb-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label={headline} className="bg-white pt-28 lg:pt-40 pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <h2
-          className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+          className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
         >
           {headline}
         </h2>
@@ -230,7 +264,7 @@ function FeaturedProjects({
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {projects.map((project, i) => (
             <div
-              key={project.label}
+              key={project.image}
               style={
                 isVisible ? { transitionDelay: `${200 + i * 150}ms` } : undefined
               }
@@ -244,6 +278,7 @@ function FeaturedProjects({
                 src={project.image}
                 alt={`${project.label} roofing project by Quality Roofing in Florida`}
                 fill
+                sizes="(max-width: 640px) 100vw, 40vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#252525]/80 via-transparent to-transparent transition-colors duration-300 group-hover:from-[#252525]/90" />
@@ -252,6 +287,13 @@ function FeaturedProjects({
                   {project.label}
                 </h3>
               </div>
+              {project.href && (
+                <Link
+                  href={project.href}
+                  aria-label={`View the ${project.label} project`}
+                  className="absolute inset-0 z-20 rounded-lg focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
+                />
+              )}
             </div>
           ))}
         </div>
@@ -260,14 +302,8 @@ function FeaturedProjects({
           style={isVisible ? { transitionDelay: '600ms' } : undefined}
           className={`mt-8 text-center ${anim(isVisible)}`}
         >
-          <Link
-            href="/projects"
-            className="group/arrow inline-flex items-center gap-1 text-sm font-bold text-[#154D29] hover:underline font-[family-name:var(--font-dm-sans)]"
-          >
+          <Link href="/projects" className={`${outlineButton}`}>
             View All Projects
-            <span className="inline-block transition-transform duration-300 group-hover/arrow:translate-x-1">
-              &rarr;
-            </span>
           </Link>
         </div>
       </div>
@@ -282,12 +318,12 @@ function CtaBanner({ headline }: { headline: string }) {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
+    <section aria-label={headline} ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
       <div
         className={`mx-auto max-w-7xl flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left ${anim(isVisible)}`}
       >
         <div>
-          <h2 className="text-2xl font-normal text-white sm:text-3xl font-[family-name:var(--font-dm-serif)]">
+          <h2 className="text-[clamp(1.75rem,3.25vw,2.25rem)] leading-[1.15] font-normal text-white font-[family-name:var(--font-dm-serif)]">
             {headline}
           </h2>
           <p className="mt-2 text-base text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
@@ -305,7 +341,7 @@ function CtaBanner({ headline }: { headline: string }) {
           </Link>
           <a
             href="tel:8136204797"
-            className="flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+            className="tap-target flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
           >
             <Phone size={16} />
             (813) 620-4797
@@ -320,23 +356,35 @@ function CtaBanner({ headline }: { headline: string }) {
    PAGE LAYOUT
    ────────────────────────────────────────────── */
 export default function PillarPageContent({
+  heroImage,
+  heroImageAlt,
   heroHeadline,
   heroSubtext,
   overviewImage,
   overviewImageAlt,
+  overviewHeadline,
   overviewParagraphs,
+  afterOverview,
   services,
   servicesHeadline,
   projectsHeadline,
   projects,
   ctaHeadline,
+  faqs,
 }: PillarPageProps) {
   return (
     <>
-      <PageHero headline={heroHeadline} subtext={heroSubtext} />
-      <Overview paragraphs={overviewParagraphs} image={overviewImage} imageAlt={overviewImageAlt} />
+      <PageHero
+        headline={heroHeadline}
+        subtext={heroSubtext}
+        image={heroImage}
+        imageAlt={heroImageAlt}
+      />
+      <Overview headline={overviewHeadline} paragraphs={overviewParagraphs} image={overviewImage} imageAlt={overviewImageAlt} />
+      {afterOverview}
       <ServicesList headline={servicesHeadline} services={services} />
       <FeaturedProjects headline={projectsHeadline} projects={projects} />
+      {faqs && <FaqSection faqs={faqs} className="pb-28 lg:pb-40" />}
       <CtaBanner headline={ctaHeadline} />
     </>
   );

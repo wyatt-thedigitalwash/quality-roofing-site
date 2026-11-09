@@ -1,13 +1,20 @@
 import type { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbSchema, pageMetadata } from '@/lib/seo';
 import AboutContent from './AboutContent';
 
-export const metadata: Metadata = {
-  title:
-    'About Quality Roofing, Inc. | Florida\'s Trusted Roofing Contractor Since 1994',
+export const metadata: Metadata = pageMetadata({
+  title: "About Us | Quality Roofing, Inc., Tampa FL",
   description:
-    'Third generation roofing and general contracting firm serving all of Florida. Over 100 employees, $29M+ annual volume, and 30+ years of expertise in commercial, residential, and multi-housing roofing.',
-};
+    "Meet Quality Roofing, Inc., a third generation roofing and general contracting firm in Tampa, FL with over 100 employees serving all of Florida since 1994.",
+  path: '/about',
+});
 
 export default function AboutPage() {
-  return <AboutContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([{ name: 'About', path: '/about' }])} />
+      <AboutContent />
+    </>
+  );
 }

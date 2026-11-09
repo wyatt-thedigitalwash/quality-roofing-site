@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { useScrollReveal } from '@/lib/animations';
+import PageHeroBackground from '@/components/PageHeroBackground';
+import HeroCta from '@/components/HeroCta';
 
 const anim = (visible: boolean) =>
   `transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -17,11 +19,14 @@ function PageHero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
+    <section aria-label="Manufacturer Partnerships"
       ref={ref}
-      className="relative flex items-center min-h-[55vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/70 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/95 md:to-[#252525]/80" />
+      <PageHeroBackground
+        src="/assets/multi-housing-tile-roof-community-aerial.webp"
+        alt="Aerial view of a multi-housing community with tile roofs in Florida"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
@@ -32,12 +37,18 @@ function PageHero() {
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
           >
             Quality Roofing is a certified installer for the industry&apos;s
             leading roofing manufacturers, delivering manufacturer-backed
             warranties and proven performance on every project.
           </p>
+          <div
+            style={isVisible ? { transitionDelay: '300ms' } : undefined}
+            className={`mt-8 ${anim(isVisible)}`}
+          >
+            <HeroCta />
+          </div>
         </div>
       </div>
     </section>
@@ -59,7 +70,7 @@ const certifiedPartners = [
   {
     name: 'Siplast',
     certification: 'Select Contractor',
-    logo: '/certificates/siplast-certified.jpg',
+    logo: '/certificates/siplast-certified.webp',
     alt: 'Siplast Select Contractor',
     description:
       'Our Siplast Select Contractor designation reflects our proven expertise in installing high-performance modified bitumen and single ply roofing systems. Siplast products are engineered for demanding commercial applications, and this partnership ensures our installations meet the highest manufacturer standards.',
@@ -67,7 +78,7 @@ const certifiedPartners = [
   {
     name: 'Johns Manville',
     certification: 'Certified Installer',
-    logo: '/certificates/johns-manville.png',
+    logo: '/certificates/johns-manville.webp',
     alt: 'Johns Manville Certified',
     description:
       'Quality Roofing is a certified installer for Johns Manville, one of the most respected names in commercial roofing. Our team is trained and qualified to install JM single ply, built up, and modified bitumen systems, backed by comprehensive manufacturer warranties.',
@@ -75,7 +86,7 @@ const certifiedPartners = [
   {
     name: 'Owens Corning',
     certification: 'Preferred Contractor',
-    logo: '/certificates/owens-corning-preferred-contractor-logo.png',
+    logo: '/certificates/owens-corning-preferred-contractor-logo.webp',
     alt: 'Owens Corning Preferred Contractor',
     description:
       'As an Owens Corning Preferred Contractor, we offer homeowners and building owners access to enhanced warranty options and industry-leading shingle, insulation, and roofing accessory products. This partnership reflects our commitment to quality residential roofing installations.',
@@ -91,7 +102,7 @@ const certifiedPartners = [
   {
     name: 'SIKA',
     certification: 'Certified Applicator',
-    logo: '/certificates/SIKA.png',
+    logo: '/certificates/SIKA.webp',
     alt: 'Certified SIKA Applicator',
     description:
       'Quality Roofing is a Certified SIKA Applicator, qualified to install SIKA Sarnafil single ply roofing membranes and liquid waterproofing systems. SIKA products are known for exceptional longevity and performance in commercial and institutional roofing applications.',
@@ -127,7 +138,7 @@ function ManufacturerProfile({
 
   const textBlock = (
     <div className="lg:col-span-3">
-      <div className="border-l-2 border-[#154D29] pl-6">
+      <div>
         <h3
           style={isVisible ? { transitionDelay: imageLeft ? '100ms' : '0ms' } : undefined}
           className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
@@ -136,7 +147,7 @@ function ManufacturerProfile({
         </h3>
         <span
           style={isVisible ? { transitionDelay: imageLeft ? '150ms' : '100ms' } : undefined}
-          className={`mt-1 inline-block text-sm font-semibold uppercase tracking-wider text-[#154D29] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+          className={`mt-1 inline-block text-sm font-semibold text-[#154D29] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
         >
           {partner.certification}
         </span>
@@ -171,11 +182,11 @@ function CertifiedProfiles() {
   const { ref: headingRef, isVisible: headingVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Our Certified Partnerships" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div ref={headingRef} className="mb-16">
           <h2
-            className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(headingVisible)}`}
+            className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(headingVisible)}`}
           >
             Our Certified Partnerships
           </h2>
@@ -189,7 +200,7 @@ function CertifiedProfiles() {
           </p>
         </div>
 
-        <div className="space-y-24">
+        <div className="space-y-24 lg:space-y-32">
           {certifiedPartners.map((partner, i) => (
             <ManufacturerProfile key={partner.name} partner={partner} index={i} />
           ))}
@@ -224,10 +235,10 @@ function AdditionalManufacturers() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Additional Manufacturers We Work With" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <h2
-          className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+          className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
         >
           Additional Manufacturers We Work With
         </h2>
@@ -289,11 +300,11 @@ function WhyCertificationsMatter() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 pb-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Why Certifications Matter" className="bg-white pt-28 lg:pt-40 pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="max-w-3xl mx-auto text-center">
           <h2
-            className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+            className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
           >
             Why Certifications Matter
           </h2>
@@ -317,7 +328,7 @@ function WhyCertificationsMatter() {
               <h3 className="text-lg font-normal text-[#252525] font-[family-name:var(--font-dm-serif)]">
                 {benefit.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#252525]/60 font-[family-name:var(--font-dm-sans)]">
+              <p className="mt-3 text-sm leading-relaxed text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
                 {benefit.description}
               </p>
             </div>
@@ -335,12 +346,12 @@ function CtaBanner() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Ready to Work With a Certified Contractor?" ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
       <div
         className={`mx-auto max-w-7xl flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left ${anim(isVisible)}`}
       >
         <div>
-          <h2 className="text-2xl font-normal text-white sm:text-3xl font-[family-name:var(--font-dm-serif)]">
+          <h2 className="text-[clamp(1.75rem,3.25vw,2.25rem)] leading-[1.15] font-normal text-white font-[family-name:var(--font-dm-serif)]">
             Ready to Work With a Certified Contractor?
           </h2>
           <p className="mt-2 text-base text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
@@ -358,7 +369,7 @@ function CtaBanner() {
           </Link>
           <a
             href="tel:8136204797"
-            className="flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+            className="tap-target flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
           >
             <Phone size={16} />
             (813) 620-4797

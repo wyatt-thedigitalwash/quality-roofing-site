@@ -1,12 +1,20 @@
 import type { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbSchema, pageMetadata } from '@/lib/seo';
 import ProjectsContent from './ProjectsContent';
 
-export const metadata: Metadata = {
-  title: 'Completed Roofing Projects | Quality Roofing, Inc. | Florida',
+export const metadata: Metadata = pageMetadata({
+  title: "Roofing Projects | Quality Roofing, Inc., Tampa FL",
   description:
-    'Browse completed commercial, residential, and multi-housing roofing projects across Florida by Quality Roofing, Inc. Over 30 years of proven results.',
-};
+    "Browse completed roofing projects by Quality Roofing, Inc. of Tampa, FL, from historic landmarks and high-rise condos to commercial and residential roofs.",
+  path: '/projects',
+});
 
 export default function ProjectsPage() {
-  return <ProjectsContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Projects', path: '/projects' }])} />
+      <ProjectsContent />
+    </>
+  );
 }

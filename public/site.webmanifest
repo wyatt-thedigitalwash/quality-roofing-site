@@ -1,0 +1,21 @@
+{
+  "name": "Quality Roofing, Inc.",
+  "short_name": "Quality Roofing",
+  "description": "Tampa Bay's Trusted Roofing Partner Since 1994",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#154D29",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /* ──────────────────────────────────────────────
    useScrollReveal
@@ -17,8 +17,9 @@ export function useScrollReveal(threshold = 0.15) {
       '(prefers-reduced-motion: reduce)'
     ).matches;
     if (prefersReduced) {
-      setIsVisible(true);
-      return;
+      // Deferred one frame so the state change doesn't run inside the effect itself.
+      const frame = requestAnimationFrame(() => setIsVisible(true));
+      return () => cancelAnimationFrame(frame);
     }
 
     const el = ref.current;
@@ -70,8 +71,8 @@ export function useCountUp({
       '(prefers-reduced-motion: reduce)'
     ).matches;
     if (prefersReduced) {
-      setDisplay(`${prefix}${end}${suffix}`);
-      return;
+      const frame = requestAnimationFrame(() => setDisplay(`${prefix}${end}${suffix}`));
+      return () => cancelAnimationFrame(frame);
     }
 
     let raf: number;

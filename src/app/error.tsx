@@ -9,25 +9,36 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-      <h1 className="text-4xl font-bold mb-4">Something Went Wrong</h1>
-      <p className="text-lg text-gray-600 mb-8">
-        An unexpected error occurred. Please try again.
-      </p>
-      <div className="flex gap-4">
-        <button
-          onClick={reset}
-          className="rounded bg-black px-6 py-3 text-white hover:bg-gray-800 transition-colors"
-        >
-          Try Again
-        </button>
-        <Link
-          href="/"
-          className="rounded border border-black px-6 py-3 hover:bg-gray-100 transition-colors"
-        >
-          Go Home
-        </Link>
+    <section aria-label="Something Went Wrong" className="flex min-h-[80vh] items-center bg-[#252525] px-4 pt-[96px] pb-24 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="max-w-2xl">
+          <h1 className="text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.1] text-white font-[family-name:var(--font-dm-serif)]">
+            Something Went Wrong
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6]">
+            An unexpected error occurred. Please try again, or call us at{' '}
+            <a href="tel:8136204797" className="tap-target font-semibold text-white underline">
+              (813) 620-4797
+            </a>
+            .
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <button
+              type="button"
+              onClick={reset}
+              className="rounded bg-[#154D29] px-8 py-4 text-center text-base font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#154D29]/85 hover:shadow-lg"
+            >
+              Try Again
+            </button>
+            <Link
+              href="/"
+              className="rounded border-2 border-white px-8 py-4 text-center text-base font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-lg"
+            >
+              Go Home
+            </Link>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
   );
 }

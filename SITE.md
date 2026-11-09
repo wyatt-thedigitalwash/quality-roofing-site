@@ -4,12 +4,14 @@
 - **Company Name:** Quality Roofing, Inc.
 - **Tagline:** Tampa Bay's Trusted Roofing Partner Since 1994
 - **Phone:** (813) 620-4797
-- **Email:** info@qualityroofing.com
+- **Fax:** (813) 626-1756
+- **Public email:** info@quality-roofing.com
+- **Website form leads go to:** Lauren.Willmar@quality-roofing.com, Miriah.Akers@quality-roofing.com
 - **Website:** quality-roofing.com
-- **Address:** Tampa, FL
+- **Address:** 1905 N. 40th Street, Tampa, FL 33605
 - **Founded:** 1994
 - **Employees:** 100+
-- **President:** Richard C. Jenkins
+- **Chief Executive Officer and Owner:** Richard C. Jenkins
 - **Licenses:** CCC042846 (Roofing) & CGC1507166 (General Contractor)
 - **Third generation licensed and state certified roofing and general contracting firm**
 - **Service Area:** Statewide -- Florida. Headquartered in Tampa but serves the entire state.
@@ -66,9 +68,12 @@
 5. **/services/residential** -- Residential roofing detail page
 6. **/services/multi-housing** -- Multi-housing roofing detail page
 7. **/services/repairs** -- Repairs & maintenance detail page
+   - **/services/standing-seam-metal** -- Standing seam metal roofing
 8. **/projects** -- Project gallery (filterable by type)
+   - **/projects/hutchinson-house** -- Featured project page (Matt Law, FRSA S.T.A.R. Award)
 9. **/manufacturers** -- Certified manufacturer partnerships
 10. **/contact** -- Contact form, estimate requests, and sales & support resources
+11. **/st-petersburg**, **/clearwater**, **/riverview** -- Service-area pages (data in src/lib/markets.ts)
 
 ## Key Stats (use across site)
 - 30+ years in business
@@ -99,4 +104,5 @@
 - **Service-specific:** multi-housing roofing Florida, roof repair Florida, GAF Master Elite roofer Florida, standing seam metal roof Florida, single ply roofing Florida, disaster restoration roofing Florida
 - **Trust/authority:** licensed roofing contractor Florida, certified roofing company Florida, third generation roofer Florida
 - Each service pillar page should target its own keyword cluster with both statewide and regional terms
-- Copy and meta descriptions should position Quality Roofing as a statewide Florida operation, not just Tampa
+- The core site targets Tampa (headquarters). Other markets get their own service-area pages, which state that crews work from the Tampa headquarters
+- Search volume (Nov 2026, Florida): "roofer [city]" and "roofing company [city]" far outrank "roofing contractor [city]"

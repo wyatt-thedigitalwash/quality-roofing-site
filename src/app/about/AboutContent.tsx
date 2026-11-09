@@ -1,9 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { outlineButton } from '@/lib/buttons';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { useScrollReveal, useCountUp } from '@/lib/animations';
+import PageHeroBackground from '@/components/PageHeroBackground';
+import HeroCta from '@/components/HeroCta';
+import TeamSection from './TeamSection';
 
 /* ──────────────────────────────────────────────
    Shared animation helper
@@ -20,11 +24,14 @@ function PageHero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
+    <section aria-label="Three Generations of Roofing Excellence"
       ref={ref}
-      className="relative flex items-center min-h-[55vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/70 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/95 md:to-[#252525]/80" />
+      <PageHeroBackground
+        src="/assets/ut-multipurpose-roofing-aerial-tampa.webp"
+        alt="Aerial view of the UT Multipurpose building with the downtown Tampa skyline beyond"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
@@ -35,11 +42,17 @@ function PageHero() {
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
           >
             Since 1994, Quality Roofing has grown from 15 employees to one of
             Florida&apos;s most trusted roofing and general contracting firms.
           </p>
+          <div
+            style={isVisible ? { transitionDelay: '300ms' } : undefined}
+            className={`mt-8 ${anim(isVisible)}`}
+          >
+            <HeroCta />
+          </div>
         </div>
       </div>
     </section>
@@ -53,14 +66,14 @@ function CompanyStory() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Our Story" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-5">
           {/* Text -- 60% */}
           <div className="lg:col-span-3">
-            <div className="border-l-2 border-[#154D29] pl-6">
+            <div>
               <h2
-                className={`text-3xl font-normal text-[#252525] sm:text-4xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+                className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
               >
                 Our Story
               </h2>
@@ -98,16 +111,14 @@ function CompanyStory() {
                 </p>
               </div>
 
-              <Link
-                href="/contact"
+              <div
                 style={isVisible ? { transitionDelay: '300ms' } : undefined}
-                className={`group/arrow mt-8 inline-flex items-center gap-1 text-sm font-bold text-[#154D29] hover:underline font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+                className={`mt-8 ${anim(isVisible)}`}
               >
-                Work With Us
-                <span className="inline-block transition-transform duration-300 group-hover/arrow:translate-x-1">
-                  &rarr;
-                </span>
-              </Link>
+                <Link href="/contact" className={outlineButton}>
+                  Work With Us
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -118,9 +129,10 @@ function CompanyStory() {
           >
             <div className="relative overflow-hidden rounded-lg aspect-square lg:aspect-[4/3]">
               <Image
-                src="/assets/museum-of-science-and-industry.jpg"
-                alt="Museum of Science and Industry roofing project by Quality Roofing in Florida"
+                src="/assets/hutchinson-house-crew-on-mansard.webp"
+                alt="Quality Roofing crew on the mansard roof of the historic Hutchinson House in Tampa"
                 fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
             </div>
@@ -138,7 +150,7 @@ function PresidentsMessage() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="A message from our CEO" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-3xl">
         {/* Top rule */}
         <hr className="border-[#E6E6E6] mb-16" />
@@ -183,18 +195,19 @@ function PresidentsMessage() {
           style={isVisible ? { transitionDelay: '300ms' } : undefined}
           className={`mt-10 flex items-center gap-4 ${anim(isVisible)}`}
         >
-          {/* Headshot placeholder */}
-          <div className="h-14 w-14 shrink-0 rounded-full bg-[#252525] flex items-center justify-center">
-            <span className="text-[9px] text-white/50 font-[family-name:var(--font-dm-sans)]">
-              Photo
-            </span>
-          </div>
+          <Image
+            src="/assets/richard-c-jenkins-ceo-quality-roofing.webp"
+            alt="Richard C. Jenkins, Chief Executive Officer and Owner of Quality Roofing, Inc."
+            width={80}
+            height={80}
+            className="h-20 w-20 shrink-0 rounded-full object-cover"
+          />
           <div>
             <span className="block text-lg font-normal text-[#252525] font-[family-name:var(--font-dm-serif)]">
               Richard C. Jenkins
             </span>
-            <span className="block text-sm text-[#B6B5B3] font-[family-name:var(--font-dm-sans)]">
-              President &amp; Founder
+            <span className="block text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
+              Chief Executive Officer and Owner
             </span>
           </div>
         </div>
@@ -210,7 +223,7 @@ function MilitarySupport() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 pb-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Proudly Supporting Our Military" className="bg-white pt-28 lg:pt-40 pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-5">
           {/* Image placeholder -- 40%, LEFT side */}
@@ -219,20 +232,21 @@ function MilitarySupport() {
           >
             <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
               <Image
-                src="/assets/tampa-police-department.jpg"
-                alt="Tampa Police Department roofing project by Quality Roofing"
+                src="/assets/quality-roofing-crew-metal-roof-install.webp"
+                alt="Quality Roofing crew in hard hats working together on a metal roof installation"
                 fill
-                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-[center_72%]"
               />
             </div>
           </div>
 
           {/* Text -- 60%, RIGHT side */}
           <div className="lg:col-span-3 order-1 lg:order-2">
-            <div className="border-l-2 border-[#154D29] pl-6">
+            <div>
               <h2
                 style={isVisible ? { transitionDelay: '100ms' } : undefined}
-                className={`text-3xl font-normal text-[#252525] sm:text-4xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+                className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
               >
                 Proudly Supporting Our Military
               </h2>
@@ -299,7 +313,7 @@ function StatItem({
       <span className="block text-[clamp(2rem,4vw,3.5rem)] font-normal text-white font-[family-name:var(--font-dm-serif)]">
         {display}
       </span>
-      <span className="mt-1 block text-sm tracking-wide uppercase text-[#B6B5B3] font-[family-name:var(--font-dm-sans)]">
+      <span className="mt-1 block text-sm text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
         {label}
       </span>
     </div>
@@ -310,7 +324,7 @@ function StatsBar() {
   const { ref, isVisible } = useScrollReveal(0.2);
 
   return (
-    <section ref={ref} className="bg-[#252525] py-20 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Company by the numbers" ref={ref} className="bg-[#252525] py-20 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-2 gap-y-12 gap-x-8 sm:grid-cols-4">
           {statsData.map((stat, i) => (
@@ -332,24 +346,24 @@ function StatsBar() {
    ────────────────────────────────────────────── */
 const certLogos = [
   { src: '/certificates/master-elite.webp', alt: 'GAF Master Elite Residential Roofing Contractor' },
-  { src: '/certificates/siplast-certified.jpg', alt: 'Siplast Select Contractor' },
-  { src: '/certificates/johns-manville.png', alt: 'Johns Manville Certified' },
-  { src: '/certificates/owens-corning-preferred-contractor-logo.png', alt: 'Owens Corning Preferred Contractor' },
+  { src: '/certificates/siplast-certified.webp', alt: 'Siplast Select Contractor' },
+  { src: '/certificates/johns-manville.webp', alt: 'Johns Manville Certified' },
+  { src: '/certificates/owens-corning-preferred-contractor-logo.webp', alt: 'Owens Corning Preferred Contractor' },
   { src: '/certificates/polyglass-preferred-customer.avif', alt: 'Polyglass Preferred Customer' },
-  { src: '/certificates/SIKA.png', alt: 'Certified SIKA Applicator' },
+  { src: '/certificates/SIKA.webp', alt: 'Certified SIKA Applicator' },
 ];
 
 function LicensesCerts() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white py-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Licensed, Certified, Trusted" className="bg-white py-28 lg:py-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Left: headline + copy */}
           <div>
             <h2
-              className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+              className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
             >
               Licensed, Certified, Trusted
             </h2>
@@ -372,7 +386,7 @@ function LicensesCerts() {
             </div>
             <p
               style={isVisible ? { transitionDelay: '300ms' } : undefined}
-              className={`mt-6 text-sm text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+              className={`mt-6 text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
             >
               License #CCC042846 (Roofing) &amp; #CGC1507166 (General Contractor)
             </p>
@@ -407,12 +421,12 @@ function CtaBanner() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Let's Talk About Your Next Project" ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
       <div
         className={`mx-auto max-w-7xl flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left ${anim(isVisible)}`}
       >
         <div>
-          <h2 className="text-2xl font-normal text-white sm:text-3xl font-[family-name:var(--font-dm-serif)]">
+          <h2 className="text-[clamp(1.75rem,3.25vw,2.25rem)] leading-[1.15] font-normal text-white font-[family-name:var(--font-dm-serif)]">
             Let&apos;s Talk About Your Next Project
           </h2>
           <p className="mt-2 text-base text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
@@ -430,7 +444,7 @@ function CtaBanner() {
           </Link>
           <a
             href="tel:8136204797"
-            className="flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+            className="tap-target flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
           >
             <Phone size={16} />
             (813) 620-4797
@@ -450,6 +464,7 @@ export default function AboutContent() {
       <PageHero />
       <CompanyStory />
       <PresidentsMessage />
+      <TeamSection />
       <MilitarySupport />
       <StatsBar />
       <LicensesCerts />

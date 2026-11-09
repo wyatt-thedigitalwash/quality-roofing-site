@@ -1,9 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { outlineButton } from '@/lib/buttons';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { useScrollReveal } from '@/lib/animations';
+import PageHeroBackground from '@/components/PageHeroBackground';
+import HeroCta from '@/components/HeroCta';
 
 const anim = (visible: boolean) =>
   `transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -17,11 +20,14 @@ function PageHero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
+    <section aria-label="Roofing Solutions for Every Sector"
       ref={ref}
-      className="relative flex items-center min-h-[55vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/70 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/95 md:to-[#252525]/80" />
+      <PageHeroBackground
+        src="/assets/harbour-court-standing-seam-metal-roof-aerial.webp"
+        alt="Aerial view of the Harbour Court standing seam metal roof"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
@@ -32,11 +38,17 @@ function PageHero() {
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
           >
             From commercial high-rises to single-family homes, Quality Roofing
             delivers expert roofing services across the entire state of Florida.
           </p>
+          <div
+            style={isVisible ? { transitionDelay: '300ms' } : undefined}
+            className={`mt-8 ${anim(isVisible)}`}
+          >
+            <HeroCta />
+          </div>
         </div>
       </div>
     </section>
@@ -50,8 +62,8 @@ const pillars = [
   {
     name: 'Commercial',
     href: '/services/commercial',
-    image: '/assets/stonewood-office-centers.jpg',
-    alt: 'Stonewood Office Centers commercial roofing project by Quality Roofing',
+    image: '/assets/city-center-at-hanna-roofing-aerial.webp',
+    alt: 'City Center at Hanna commercial roofing project by Quality Roofing',
     description:
       'Roofing solutions for offices, retail centers, warehouses, hotels, and large-scale commercial properties. We work with general contractors, developers, and architects on projects of every scale, including developments exceeding $5 million.',
     services: 'New Construction, Single Ply Systems, Built Up Roofing, Modified Bitumen, Standing Seam Metal, Pedestal Pavers',
@@ -59,8 +71,8 @@ const pillars = [
   {
     name: 'Residential',
     href: '/services/residential',
-    image: '/assets/private-reseidence-project.jpg',
-    alt: 'Private residence roofing project by Quality Roofing in Florida',
+    image: '/assets/private-residence-metal-roof-aerial.webp',
+    alt: 'Metal roof on a private residence by Quality Roofing in Florida',
     description:
       'Protecting Florida homes with premium materials and craftsmanship built on three generations of experience. From custom builds to full replacements, we deliver manufacturer-certified installations with the highest warranty coverage available.',
     services: 'Shingle / Tile / Slate, Standing Seam Metal, New Construction, Roof Replacement, Repairs & Maintenance',
@@ -68,8 +80,8 @@ const pillars = [
   {
     name: 'Multi-Housing',
     href: '/services/multi-housing',
-    image: '/assets/stovall-condos.jpg',
-    alt: 'Stovall Condos multi-housing roofing project by Quality Roofing',
+    image: '/assets/multi-housing-townhomes-green-roof-aerial.webp',
+    alt: 'Aerial view of green-roofed multi-housing townhomes by Quality Roofing',
     description:
       'Specialized roofing for apartments, condominiums, HOA communities, and multi-family complexes. We coordinate phased project schedules to minimize tenant disruption and manage community-wide reroofing with precision.',
     services: 'New Construction, Roof Replacement, Single Ply Systems, Shingle / Tile / Slate, Repairs & Maintenance',
@@ -77,11 +89,20 @@ const pillars = [
   {
     name: 'Repairs',
     href: '/services/repairs',
-    image: '/assets/desoto-elementrary-school.jpg',
-    alt: 'DeSoto Elementary School roof repair project by Quality Roofing',
+    image: '/assets/hutchinson-house-copper-dormers-fish-scale-slate.webp',
+    alt: 'Historical preservation roofing with copper dormers and fish scale slate at the Hutchinson House in Tampa by Quality Roofing',
     description:
       'Fast, reliable repair services and proactive maintenance programs to extend the life of your roof. Our team handles emergency storm damage, water intrusion, and specialized historical preservation work on landmark buildings.',
     services: 'Repairs & Maintenance, Roof Assessments, Disaster Restoration, Historical Preservation',
+  },
+  {
+    name: 'Standing Seam Metal',
+    href: '/services/standing-seam-metal',
+    image: '/assets/private-residence-metal-roof-front.webp',
+    alt: 'Private Florida residence with a metal roof by Quality Roofing',
+    description:
+      'Custom standing seam metal roofing for commercial, residential, and multi-housing properties. Panels are formed with our own mobile roll former machines, backed by our experience in custom sheet metal fabrication.',
+    services: 'Custom Fabrication, New Construction, Roof Replacement, Historical Preservation, Seamless Gutters',
   },
 ];
 
@@ -105,6 +126,7 @@ function PillarRow({
           src={pillar.image}
           alt={pillar.alt}
           fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover"
         />
       </div>
@@ -115,10 +137,10 @@ function PillarRow({
     <div
       className={`lg:col-span-3 ${imageLeft ? '' : ''}`}
     >
-      <div className="border-l-2 border-[#154D29] pl-6">
+      <div>
         <h2
           style={isVisible ? { transitionDelay: imageLeft ? '100ms' : '0ms' } : undefined}
-          className={`text-3xl font-normal text-[#252525] sm:text-4xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+          className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
         >
           {pillar.name}
         </h2>
@@ -130,20 +152,18 @@ function PillarRow({
         </p>
         <p
           style={isVisible ? { transitionDelay: imageLeft ? '300ms' : '250ms' } : undefined}
-          className={`mt-4 text-sm text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+          className={`mt-4 text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
         >
           {pillar.services}
         </p>
-        <Link
-          href={pillar.href}
+        <div
           style={isVisible ? { transitionDelay: imageLeft ? '400ms' : '350ms' } : undefined}
-          className={`group/arrow mt-6 inline-flex items-center gap-1 text-sm font-bold text-[#154D29] hover:underline font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+          className={`mt-6 ${anim(isVisible)}`}
         >
-          Learn More
-          <span className="inline-block transition-transform duration-300 group-hover/arrow:translate-x-1">
-            &rarr;
-          </span>
-        </Link>
+          <Link href={pillar.href} className={outlineButton}>
+            Learn More
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -167,8 +187,8 @@ function PillarRow({
 
 function FourPillars() {
   return (
-    <section className="bg-white pt-28 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl space-y-28">
+    <section aria-label="Service categories" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl space-y-28 lg:space-y-40">
         {pillars.map((pillar, i) => (
           <PillarRow key={pillar.name} pillar={pillar} index={i} />
         ))}
@@ -202,12 +222,12 @@ function FullServicesList() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section className="bg-white pt-28 pb-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Complete Roofing Services" className="bg-white pt-28 lg:pt-40 pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
             <h2
-              className={`text-2xl font-normal text-[#252525] sm:text-3xl font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
+              className={`text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
             >
               Complete Roofing Services
             </h2>
@@ -287,12 +307,12 @@ function CtaBanner() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Need a Roofing Expert?" ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
       <div
         className={`mx-auto max-w-7xl flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left ${anim(isVisible)}`}
       >
         <div>
-          <h2 className="text-2xl font-normal text-white sm:text-3xl font-[family-name:var(--font-dm-serif)]">
+          <h2 className="text-[clamp(1.75rem,3.25vw,2.25rem)] leading-[1.15] font-normal text-white font-[family-name:var(--font-dm-serif)]">
             Need a Roofing Expert?
           </h2>
           <p className="mt-2 text-base text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
@@ -310,7 +330,7 @@ function CtaBanner() {
           </Link>
           <a
             href="tel:8136204797"
-            className="flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+            className="tap-target flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
           >
             <Phone size={16} />
             (813) 620-4797

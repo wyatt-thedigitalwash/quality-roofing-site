@@ -4,6 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { useScrollReveal } from '@/lib/animations';
+import PageHeroBackground from '@/components/PageHeroBackground';
+import HeroCta from '@/components/HeroCta';
+import FeaturedProjectSpotlight from '@/components/FeaturedProjectSpotlight';
 
 const anim = (visible: boolean) =>
   `transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -15,30 +18,44 @@ const anim = (visible: boolean) =>
    ────────────────────────────────────────────── */
 const projects = [
   { src: '/assets/belleview-biltmore-commercial-roofing-project.webp', name: 'Belleview Biltmore' },
+  { src: '/assets/belleview-biltmore-roof-aerial.webp', name: 'Belleview Biltmore Aerial' },
+  { src: '/assets/belleview-community-aerial.webp', name: 'Belleview Community' },
+  { src: '/assets/skypoint-condos-high-rise-roof-aerial.webp', name: 'Skypoint Condos' },
   { src: '/assets/345-bayshore-highrise-roofing-tampa.webp', name: '345 Bayshore' },
+  { src: '/assets/city-center-at-hanna-roofing-aerial.webp', name: 'City Center at Hanna' },
+  { src: '/assets/dunedin-city-hall-roofing-aerial.webp', name: 'Dunedin City Hall' },
   { src: '/assets/harbour-court-standing-seam-metal-roof-aerial.webp', name: 'Harbour Court' },
   { src: '/assets/camden-bay-multi-housing-roofing-aerial.webp', name: 'Camden Bay' },
   { src: '/assets/sparkman-wharf-commercial-roofing-tampa.webp', name: 'Sparkman Wharf' },
   { src: '/assets/harbour-court-condos-roofing-aerial.webp', name: 'Harbour Court Condos' },
   { src: '/assets/multi-housing-tile-roof-community-aerial.webp', name: 'Multi-Housing Community' },
+  { src: '/assets/crystal-bay-multi-housing-roofing-aerial.webp', name: 'Crystal Bay' },
+  { src: '/assets/multi-housing-townhomes-roof-aerial.webp', name: 'Multi-Housing Townhomes' },
+  { src: '/assets/new-life-village-roofing-aerial.webp', name: 'New Life Village' },
   { src: '/assets/copper-shingle-roof-installation-florida.webp', name: 'Copper Shingle Installation' },
-  { src: '/assets/museum-of-science-and-industry.jpg', name: 'Museum of Science & Industry' },
-  { src: '/assets/USF-copper-hall.jpg', name: 'USF Copper Hall' },
-  { src: '/assets/usf-tat-enr-building.jpg', name: 'USF TAT ENR Building' },
-  { src: '/assets/st-petersburg-high-school.jpg', name: 'St. Petersburg High School' },
-  { src: '/assets/desoto-elementrary-school.jpg', name: 'DeSoto Elementary School' },
-  { src: '/assets/tampa-police-department.jpg', name: 'Tampa Police Department' },
-  { src: '/assets/gulfview-resort-towers.jpg', name: 'Gulfview Resort Towers' },
-  { src: '/assets/stovall-condos.jpg', name: 'Stovall Condos' },
-  { src: '/assets/stonewood-office-centers.jpg', name: 'Stonewood Office Centers' },
-  { src: '/assets/shoppes-at-bloomington.jpg', name: 'Shoppes at Bloomington' },
-  { src: '/assets/apollo-industrial.jpg', name: 'Apollo Industrial' },
-  { src: '/assets/boyette-retail.jpg', name: 'Boyette Retail' },
-  { src: '/assets/pillars-barbor.jpg', name: 'Pillars Harbor' },
-  { src: '/assets/oster-catcher-restaurant.jpg', name: 'Oystercatcher Restaurant' },
-  { src: '/assets/private-reseidence-project.jpg', name: 'Private Residence' },
-  { src: '/assets/private-residency-2.jpg', name: 'Private Residence II' },
-  { src: '/assets/private-residency-3.jpg', name: 'Private Residence III' },
+  { src: '/assets/museum-of-science-and-industry.webp', name: 'Museum of Science & Industry' },
+  { src: '/assets/USF-copper-hall.webp', name: 'USF Cooper Hall' },
+  { src: '/assets/usf-tat-enr-building.webp', name: 'USF TAT ENR Building' },
+  { src: '/assets/ut-multipurpose-roofing-aerial-tampa.webp', name: 'UT Multipurpose' },
+  { src: '/assets/ut-sykes-roof-aerial.webp', name: 'UT Sykes' },
+  { src: '/assets/st-petersburg-high-school.webp', name: 'St. Petersburg High School' },
+  { src: '/assets/desoto-elementrary-school.webp', name: 'DeSoto Elementary School' },
+  { src: '/assets/tampa-police-department.webp', name: 'Tampa Police Department' },
+  { src: '/assets/gulfview-resort-towers.webp', name: 'Gulfview Resort Towers' },
+  { src: '/assets/stovall-condos.webp', name: 'Stovall Condos' },
+  { src: '/assets/stonewood-office-centers.webp', name: 'Stonewood Office Centers' },
+  { src: '/assets/shoppes-at-bloomington.webp', name: 'Shoppes at Bloomingdale' },
+  { src: '/assets/apollo-industrial.webp', name: 'Apollo Industrial' },
+  { src: '/assets/boyette-retail.webp', name: 'Boyette Retail' },
+  { src: '/assets/pillars-barbor.webp', name: 'Pillars Harbor' },
+  { src: '/assets/oster-catcher-restaurant.webp', name: 'Oystercatcher Restaurant' },
+  { src: '/assets/private-residence-metal-roof-front.webp', name: 'Private Residence' },
+  { src: '/assets/private-residency-2.webp', name: 'Private Residence II' },
+  { src: '/assets/private-residency-3.webp', name: 'Private Residence III' },
+  { src: '/assets/private-residence-brick-home.webp', name: 'Private Residence IV' },
+  { src: '/assets/private-residence-stone-home.webp', name: 'Private Residence V' },
+  { src: '/assets/private-residence-roof-aerial.webp', name: 'Private Residence VI' },
+  { src: '/assets/ut-plant-hall-aerial.webp', name: 'UT Plant Hall' },
 ];
 
 /* ──────────────────────────────────────────────
@@ -48,11 +65,14 @@ function PageHero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
+    <section aria-label="Our Work Speaks for Itself"
       ref={ref}
-      className="relative flex items-center min-h-[55vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#252525]/95 via-[#252525]/85 to-[#252525]/70 md:bg-gradient-to-r md:from-[#252525] md:via-[#252525]/95 md:to-[#252525]/80" />
+      <PageHeroBackground
+        src="/assets/345-bayshore-roof-aerial-overhead.webp"
+        alt="Overhead aerial view of the 345 Bayshore high-rise roof in Tampa"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
@@ -63,11 +83,17 @@ function PageHero() {
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
-            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#B6B5B3] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
+            className={`mt-6 max-w-xl text-lg leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
           >
             Explore completed roofing projects across Florida, from commercial
             high-rises to residential communities.
           </p>
+          <div
+            style={isVisible ? { transitionDelay: '300ms' } : undefined}
+            className={`mt-8 ${anim(isVisible)}`}
+          >
+            <HeroCta />
+          </div>
         </div>
       </div>
     </section>
@@ -121,10 +147,14 @@ function ProjectGallery() {
   }
 
   return (
-    <section className="bg-white pt-28 pb-28 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Project gallery" className="bg-white pt-28 lg:pt-40 pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl space-y-5">
+        <FeaturedProjectSpotlight
+          image="/assets/hutchinson-house-finished-roof-aerial-tampa.webp"
+          imageAlt="Aerial view of the completed Hutchinson House roof on a brick-paved street corner in Tampa"
+        />
         {rows.map((row, rowIdx) => (
-          <GalleryRow key={rowIdx} projects={row} rowIndex={rowIdx} />
+          <GalleryRow key={rowIdx} projects={row} />
         ))}
       </div>
     </section>
@@ -133,10 +163,8 @@ function ProjectGallery() {
 
 function GalleryRow({
   projects: rowProjects,
-  rowIndex,
 }: {
   projects: (typeof projects);
-  rowIndex: number;
 }) {
   const { ref, isVisible } = useScrollReveal(0.1);
 
@@ -164,12 +192,12 @@ function CtaBanner() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Have a Project in Mind?" ref={ref} className="bg-[#154D29] py-16 px-4 sm:px-6 lg:px-8">
       <div
         className={`mx-auto max-w-7xl flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left ${anim(isVisible)}`}
       >
         <div>
-          <h2 className="text-2xl font-normal text-white sm:text-3xl font-[family-name:var(--font-dm-serif)]">
+          <h2 className="text-[clamp(1.75rem,3.25vw,2.25rem)] leading-[1.15] font-normal text-white font-[family-name:var(--font-dm-serif)]">
             Have a Project in Mind?
           </h2>
           <p className="mt-2 text-base text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
@@ -187,7 +215,7 @@ function CtaBanner() {
           </Link>
           <a
             href="tel:8136204797"
-            className="flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+            className="tap-target flex items-center gap-2 text-base font-semibold text-[#E6E6E6] hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
           >
             <Phone size={16} />
             (813) 620-4797

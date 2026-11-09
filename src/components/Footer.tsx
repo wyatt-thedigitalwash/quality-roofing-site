@@ -9,10 +9,19 @@ const companyLinks = [
 ];
 
 const serviceLinks = [
+  { name: 'All Services', href: '/services' },
   { name: 'Commercial', href: '/services/commercial' },
   { name: 'Residential', href: '/services/residential' },
   { name: 'Multi-Housing', href: '/services/multi-housing' },
   { name: 'Repairs', href: '/services/repairs' },
+  { name: 'Standing Seam Metal', href: '/services/standing-seam-metal' },
+];
+
+const areaLinks = [
+  { name: 'Tampa', href: '/' },
+  { name: 'St. Petersburg', href: '/st-petersburg' },
+  { name: 'Clearwater', href: '/clearwater' },
+  { name: 'Riverview', href: '/riverview' },
 ];
 
 const certifications = [
@@ -28,40 +37,52 @@ export default function Footer() {
   return (
     <footer className="bg-[#252525]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-2 md:text-left lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-2 md:text-left lg:grid-cols-5">
           {/* Column 1: Logo + Description */}
           <div className="flex flex-col items-center md:items-start">
-            <Link href="/">
+            <Link href="/" aria-label="Quality Roofing, Inc. home">
               <Image
-                src="/assets/quality-roofing-logo-white.png"
+                src="/assets/quality-roofing-logo-white-no-phone.svg"
                 alt="Quality Roofing, Inc."
-                width={180}
-                height={36}
+                width={125}
+                height={80}
+                className="h-20 w-auto"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
               A third generation licensed and state certified roofing and general
               contracting firm serving all of Florida since 1994.
             </p>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
+              1905 N. 40th Street
+              <br />
+              Tampa, FL 33605
+            </address>
             <a
               href="tel:8136204797"
-              className="mt-4 text-sm font-semibold text-[#E6E6E6] hover:text-[#154D29] transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+              className="mt-1 inline-flex min-h-11 items-center text-sm font-semibold text-[#E6E6E6] lg:mt-3 lg:min-h-0 hover:text-white transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
             >
               (813) 620-4797
+            </a>
+            <a
+              href="mailto:info@quality-roofing.com"
+              className="inline-flex min-h-11 items-center text-sm text-[#E6E6E6] hover:text-white lg:mt-1 lg:min-h-0 transition-colors duration-300"
+            >
+              info@quality-roofing.com
             </a>
           </div>
 
           {/* Column 2: Company */}
           <div>
-            <h3 className="text-sm font-normal uppercase tracking-wider text-white font-[family-name:var(--font-dm-serif)]">
+            <h2 className="text-lg font-normal text-white font-[family-name:var(--font-dm-serif)]">
               Company
-            </h3>
-            <ul className="mt-4 space-y-2.5">
+            </h2>
+            <ul className="mt-2 lg:mt-4 lg:space-y-2.5">
               {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#E6E6E6] hover:text-[#154D29] transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-sm text-[#E6E6E6] hover:text-white transition-colors duration-300 lg:min-h-0 lg:min-w-0 font-[family-name:var(--font-dm-sans)]"
                   >
                     {link.name}
                   </Link>
@@ -72,15 +93,15 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div>
-            <h3 className="text-sm font-normal uppercase tracking-wider text-white font-[family-name:var(--font-dm-serif)]">
+            <h2 className="text-lg font-normal text-white font-[family-name:var(--font-dm-serif)]">
               Services
-            </h3>
-            <ul className="mt-4 space-y-2.5">
+            </h2>
+            <ul className="mt-2 lg:mt-4 lg:space-y-2.5">
               {serviceLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#E6E6E6] hover:text-[#154D29] transition-colors duration-300 font-[family-name:var(--font-dm-sans)]"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-sm text-[#E6E6E6] hover:text-white transition-colors duration-300 lg:min-h-0 lg:min-w-0 font-[family-name:var(--font-dm-sans)]"
                   >
                     {link.name}
                   </Link>
@@ -89,11 +110,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Certifications */}
+          {/* Column 4: Service Areas */}
           <div>
-            <h3 className="text-sm font-normal uppercase tracking-wider text-white font-[family-name:var(--font-dm-serif)]">
+            <h2 className="text-lg font-normal text-white font-[family-name:var(--font-dm-serif)]">
+              Service Areas
+            </h2>
+            <ul className="mt-2 lg:mt-4 lg:space-y-2.5">
+              {areaLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-sm text-[#E6E6E6] hover:text-white transition-colors duration-300 lg:min-h-0 lg:min-w-0 font-[family-name:var(--font-dm-sans)]"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 5: Certifications */}
+          <div>
+            <h2 className="text-lg font-normal text-white font-[family-name:var(--font-dm-serif)]">
               Certifications
-            </h3>
+            </h2>
             <ul className="mt-4 space-y-2.5">
               {certifications.map((cert) => (
                 <li
@@ -124,10 +164,15 @@ export default function Footer() {
                 href="https://thedigitalwash.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#E6E6E6] hover:text-[#154D29] transition-colors duration-300"
+                className="text-[#E6E6E6] underline hover:text-white transition-colors duration-300"
               >
                 The Digital Wash
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
+              {' | '}
+              <Link href="/privacy" className="text-[#E6E6E6] underline hover:text-white transition-colors duration-300">
+                Privacy Policy
+              </Link>
             </p>
           </div>
         </div>
