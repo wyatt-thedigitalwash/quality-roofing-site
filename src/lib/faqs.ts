@@ -26,7 +26,7 @@ export const homeFaqs: Faq[] = [
   {
     question: 'Which roofing manufacturers are you certified with?',
     answer:
-      'We are certified with GAF, Siplast, Johns Manville, Owens Corning, Polyglass, and SIKA, which gives our clients access to manufacturer-backed warranties.',
+      'We are certified with GAF, Siplast, Johns Manville, Owens Corning, Polyglass, SIKA, and Brava, which gives our clients access to manufacturer-backed warranties.',
   },
 ];
 
@@ -98,6 +98,29 @@ export const multiHousingFaqs: Faq[] = [
     question: 'Can you help us plan and budget for roof work?',
     answer:
       'Yes. We provide detailed roof condition reports to support capital planning and reserve budgeting.',
+  },
+];
+
+export const condominiumFaqs: Faq[] = [
+  {
+    question: 'Do you roof high-rise condominium buildings?',
+    answer:
+      'Yes. Our condominium work ranges from garden-style and mid-rise communities to high-rise towers, including Skypoint Condos and 345 Bayshore in Tampa.',
+  },
+  {
+    question: 'Who do you work with at the association?',
+    answer:
+      'We work directly with condominium boards, community association managers, and their engineers, from the first assessment through final closeout.',
+  },
+  {
+    question: 'How do you limit disruption for residents?',
+    answer:
+      'We plan material staging, access, and work hours around the building, and keep management updated on the schedule so residents know what to expect.',
+  },
+  {
+    question: 'Can you help the board plan and budget for a new roof?',
+    answer:
+      'Yes. We provide detailed roof condition reports that support capital planning and reserve budgeting for your association.',
   },
 ];
 

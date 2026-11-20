@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { outlineButton } from '@/lib/buttons';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
-import { useScrollReveal, useCountUp } from '@/lib/animations';
+import { useScrollReveal } from '@/lib/animations';
 import FeaturedProjectSpotlight from '@/components/FeaturedProjectSpotlight';
 import HomeAudiences from '@/components/home/HomeAudiences';
 import HomeCredentials from '@/components/home/HomeCredentials';
 import HomeServices from '@/components/home/HomeServices';
+import HomeTeam from '@/components/home/HomeTeam';
 import FaqSection from '@/components/FaqSection';
 import { homeFaqs } from '@/lib/faqs';
 import HeroVideo from '@/components/HeroVideo';
@@ -35,7 +36,7 @@ function Hero() {
     <section aria-label="Florida's Trusted Roofing Contractor Since 1994"
       ref={ref}
       data-bg="dark"
-      className="relative flex flex-1 items-center bg-[#252525] px-4 pt-[112px] pb-20 sm:px-6 lg:px-8"
+      className="relative flex flex-1 items-center bg-[#252525] px-4 pt-[120px] pb-20 sm:px-6 lg:px-8"
     >
       {/* Full-bleed video behind the text at every width */}
       <div className="absolute inset-0 overflow-hidden">
@@ -88,53 +89,11 @@ function Hero() {
 /* ──────────────────────────────────────────────
    SECTION 3 -- ABOUT INTRO
    ────────────────────────────────────────────── */
-const statsData = [
-  { end: 30, prefix: '', suffix: '+', label: 'Years in Business' },
-  { end: 100, prefix: '', suffix: '+', label: 'Employees' },
-  { end: 29, prefix: '$', suffix: 'M+', label: 'Annual Volume' },
-];
-
-function StatCounter({
-  end,
-  prefix,
-  suffix,
-  label,
-  start,
-  delay,
-}: {
-  end: number;
-  prefix: string;
-  suffix: string;
-  label: string;
-  start: boolean;
-  delay: number;
-}) {
-  const display = useCountUp({ end, prefix, suffix, start, duration: 1800 });
-  const { ref, isVisible } = useScrollReveal(0.15);
-
-  return (
-    <div
-      ref={ref}
-      style={isVisible ? { transitionDelay: `${delay}ms` } : undefined}
-      className={`text-center lg:text-left transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}
-    >
-      <span className="block text-[clamp(1.75rem,8vw,2.5rem)] lg:text-[clamp(2.5rem,3.5vw,3rem)] text-[#154D29] font-[family-name:var(--font-dm-serif)]">
-        {display}
-      </span>
-      <span className="text-sm text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 function AboutIntro() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section aria-label="Built on Three Generations of Roofing Excellence" data-bg="white" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Built on Three Decades of Roofing Excellence" data-bg="white" className="bg-white pt-28 lg:pt-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-5">
           {/* Text -- 60% */}
@@ -146,7 +105,7 @@ function AboutIntro() {
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
               >
-                Built on Three Generations of Roofing Excellence
+                Built on Three Decades of Roofing Excellence
               </h2>
 
               <div
@@ -156,41 +115,31 @@ function AboutIntro() {
                 }`}
               >
                 <p>
-                  Quality Roofing, Inc. was founded in 1994 as a third generation
-                  roofing and general contracting firm. What started as a family
-                  trade has grown into one of Florida&apos;s most trusted roofing
-                  companies, with over 100 employees and a reputation built almost
-                  entirely on referrals.
+                  Founded in 1994, Quality Roofing, Inc. is a licensed,
+                  state-certified roofing and general contracting company
+                  headquartered in Tampa and serving the entire state of Florida.
+                  Over three decades, we have grown from a small local operation
+                  into one of Florida&apos;s most respected roofing contractors,
+                  with our growth built almost entirely on referrals from current
+                  and past customers.
                 </p>
                 <p>
-                  Under the leadership of CEO Richard C. Jenkins, the company
-                  serves the entire state of Florida from its Tampa headquarters.
-                  Our team delivers commercial, residential, and multi-housing
-                  roofing solutions with the craftsmanship and reliability that
-                  three generations of experience demand.
+                  We are qualified in all phases of commercial, residential, and
+                  multi-family roofing, from single-family homes to large-scale
+                  developments. As certified installers for multiple major
+                  manufacturers, we provide manufacturer-backed warranties that give
+                  our customers added confidence on every project.
                 </p>
                 <p>
-                  We hold both a certified roofing contractor license and a general
-                  contractor license, giving us the range to handle projects of
-                  any scale, from single-family homes to developments exceeding $5
-                  million.
+                  We self-perform the majority of our projects with our own
+                  trained crews and company-owned equipment, so we manage quality,
+                  scheduling, and costs directly rather than depending on
+                  subcontractors.
                 </p>
-              </div>
-
-              {/* Stats row */}
-              <div className="mt-10 grid grid-cols-3 gap-6">
-                {statsData.map((stat, i) => (
-                  <StatCounter
-                    key={stat.label}
-                    {...stat}
-                    start={isVisible}
-                    delay={300 + i * 100}
-                  />
-                ))}
               </div>
 
               <div
-                style={isVisible ? { transitionDelay: '600ms' } : undefined}
+                style={isVisible ? { transitionDelay: '300ms' } : undefined}
                 className={`mt-8 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               >
                 <Link href="/about" className={outlineButton}>
@@ -394,6 +343,7 @@ export default function Home() {
       </div>
       <div className="space-y-28 lg:space-y-40 bg-white">
         <AboutIntro />
+        <HomeTeam />
         <HomeServices />
         <HomeAudiences />
         <FeaturedProjects />

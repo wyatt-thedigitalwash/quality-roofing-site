@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { outlineButton } from '@/lib/buttons';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
-import { useScrollReveal, useCountUp } from '@/lib/animations';
+import { useScrollReveal } from '@/lib/animations';
 import PageHeroBackground from '@/components/PageHeroBackground';
 import HeroCta from '@/components/HeroCta';
 import TeamSection from './TeamSection';
@@ -24,7 +24,7 @@ function PageHero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section aria-label="Three Generations of Roofing Excellence"
+    <section aria-label="Three Decades of Roofing Excellence"
       ref={ref}
       className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
     >
@@ -38,7 +38,7 @@ function PageHero() {
           <h1
             className={`text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.1] text-white font-[family-name:var(--font-dm-serif)] ${anim(isVisible)}`}
           >
-            Three Generations of Roofing Excellence
+            Three Decades of Roofing Excellence
           </h1>
           <p
             style={isVisible ? { transitionDelay: '150ms' } : undefined}
@@ -83,31 +83,41 @@ function CompanyStory() {
                 className={`mt-6 space-y-4 text-base leading-relaxed text-[#252525]/70 font-[family-name:var(--font-dm-sans)] ${anim(isVisible)}`}
               >
                 <p>
-                  Quality Roofing, Inc. was founded in 1994 as a third generation
-                  licensed and state certified roofing and general contracting firm.
-                  What began as a 15-person operation built on family tradition has
-                  grown into one of Florida&apos;s most respected roofing companies,
-                  with over 100 employees and an annual sales volume exceeding $29
-                  million.
+                  Founded in 1994, Quality Roofing, Inc. is a licensed,
+                  state-certified roofing and general contracting company
+                  headquartered in Tampa and serving the entire state of Florida.
+                  Over three decades, we have grown from a small local operation
+                  into one of Florida&apos;s most respected roofing contractors,
+                  supported by a large and experienced in-house workforce.
                 </p>
                 <p>
-                  Headquartered in Tampa, we serve the entire state of Florida. Our
-                  reputation has been built almost entirely on referrals from existing
-                  and previous customers, a testament to the relationships we maintain
-                  and the quality we deliver on every project.
+                  Our growth has been built almost entirely on referrals from
+                  current and past customers. Rather than relying on heavy
+                  advertising, we have earned our business through consistent
+                  performance and lasting relationships, which has given us a loyal
+                  client base and a steady flow of new work.
                 </p>
                 <p>
                   We are qualified in all phases of commercial, residential, and
-                  multi-housing roofing. As certified installers for multiple major
-                  manufacturers, we bring manufacturer-backed expertise to every job.
-                  The majority of our work is completed in-house with our own
-                  dedicated staff and equipment, giving us full control over quality
-                  and timelines.
+                  multi-family roofing, handling everything from single-family
+                  homes to large-scale developments. This range allows us to serve a
+                  broad mix of clients and keeps the business strong across changing
+                  market conditions. As certified installers for multiple major
+                  manufacturers, we also provide manufacturer-backed warranties that
+                  give our customers added confidence on every project.
                 </p>
                 <p>
-                  From single-family homes to developments exceeding $5 million in
-                  scope, we have the licensing, certifications, and team to handle
-                  projects of any scale.
+                  What truly sets us apart is control over our work. We
+                  self-perform the majority of our projects with our own trained
+                  crews and company-owned equipment, allowing us to manage quality,
+                  scheduling, and costs directly rather than depending on
+                  subcontractors.
+                </p>
+                <p>
+                  With a trusted name, statewide licensing, a skilled workforce,
+                  and proven operating systems already in place, Quality Roofing is
+                  well positioned in one of the most active roofing markets in the
+                  country and ready for its next chapter of growth.
                 </p>
               </div>
 
@@ -170,9 +180,9 @@ function PresidentsMessage() {
         >
           <p>
             Quality Roofing was built on a simple principle: do exceptional work,
-            stand behind it, and treat every relationship like it matters. Three
-            generations of our family have carried that commitment forward, and it
-            remains the foundation of everything we do today.
+            stand behind it, and treat every relationship like it matters. For more
+            than three decades, our team has carried that commitment forward, and
+            it remains the foundation of everything we do today.
           </p>
           <p>
             We are deeply invested in the communities we serve. Whether
@@ -196,11 +206,11 @@ function PresidentsMessage() {
           className={`mt-10 flex items-center gap-4 ${anim(isVisible)}`}
         >
           <Image
-            src="/assets/richard-c-jenkins-ceo-quality-roofing.webp"
+            src="/assets/team/richard-jenkins-headshot-quality-roofing.webp"
             alt="Richard C. Jenkins, Chief Executive Officer and Owner of Quality Roofing, Inc."
-            width={80}
-            height={80}
-            className="h-20 w-20 shrink-0 rounded-full object-cover"
+            width={96}
+            height={96}
+            className="h-24 w-24 shrink-0 rounded-full object-cover object-top"
           />
           <div>
             <span className="block text-lg font-normal text-[#252525] font-[family-name:var(--font-dm-serif)]">
@@ -277,71 +287,6 @@ function MilitarySupport() {
 }
 
 /* ──────────────────────────────────────────────
-   SECTION 5 -- STATS BAR
-   ────────────────────────────────────────────── */
-const statsData = [
-  { end: 1994, prefix: '', suffix: '', label: 'Founded' },
-  { end: 100, prefix: '', suffix: '+', label: 'Employees' },
-  { end: 29, prefix: '$', suffix: 'M+', label: 'Annual Volume' },
-  { end: 5, prefix: '$', suffix: 'M+', label: 'Largest Project' },
-];
-
-function StatItem({
-  end,
-  prefix,
-  suffix,
-  label,
-  start,
-  delay,
-}: {
-  end: number;
-  prefix: string;
-  suffix: string;
-  label: string;
-  start: boolean;
-  delay: number;
-}) {
-  const display = useCountUp({ end, prefix, suffix, start, duration: 1800 });
-
-  return (
-    <div
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`text-center transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        start ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}
-    >
-      <span className="block text-[clamp(2rem,4vw,3.5rem)] font-normal text-white font-[family-name:var(--font-dm-serif)]">
-        {display}
-      </span>
-      <span className="mt-1 block text-sm text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function StatsBar() {
-  const { ref, isVisible } = useScrollReveal(0.2);
-
-  return (
-    <section aria-label="Company by the numbers" ref={ref} className="bg-[#252525] py-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 gap-y-12 gap-x-8 sm:grid-cols-4">
-          {statsData.map((stat, i) => (
-            <StatItem
-              key={stat.label}
-              {...stat}
-              start={isVisible}
-              delay={i * 120}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ──────────────────────────────────────────────
    SECTION 6 -- LICENSES & CERTIFICATIONS
    ────────────────────────────────────────────── */
 const certLogos = [
@@ -357,7 +302,7 @@ function LicensesCerts() {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section aria-label="Licensed, Certified, Trusted" className="bg-white py-28 lg:py-40 px-4 sm:px-6 lg:px-8">
+    <section aria-label="Licensed, Certified, Trusted" className="bg-white pb-28 lg:pb-40 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Left: headline + copy */}
@@ -466,7 +411,6 @@ export default function AboutContent() {
       <PresidentsMessage />
       <TeamSection />
       <MilitarySupport />
-      <StatsBar />
       <LicensesCerts />
       <CtaBanner />
     </>

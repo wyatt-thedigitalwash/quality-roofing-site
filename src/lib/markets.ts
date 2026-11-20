@@ -50,7 +50,7 @@ export const markets: Market[] = [
     heroImage: '/assets/multi-housing-tile-roof-community-aerial.webp',
     heroImageAlt: 'Aerial view of a multi-housing community with clay tile roofs by Quality Roofing',
     heroText:
-      'Commercial, residential, and multi-housing roofing for St. Petersburg, from a third generation roofing company based across the bay in Tampa.',
+      'Commercial, residential, and multi-housing roofing for St. Petersburg, from a roofing company based across the bay in Tampa since 1994.',
     introHeading: 'Your St. Petersburg Roofing Company',
     intro: [
       'Since 1994, Quality Roofing has served property owners across Tampa Bay from our Tampa headquarters, including St. Petersburg. Our work here ranges from the tile roof at St. Petersburg High School to new shingle roofs on homes across the city.',
@@ -89,7 +89,7 @@ export const markets: Market[] = [
     heroImage: '/assets/dunedin-city-hall-roofing-aerial.webp',
     heroImageAlt: 'Aerial view of the Dunedin City Hall roof, just north of Clearwater',
     heroText:
-      'Commercial, residential, and multi-housing roofing for Clearwater and North Pinellas, from a third generation roofing company headquartered in Tampa.',
+      'Commercial, residential, and multi-housing roofing for Clearwater and North Pinellas, from a roofing company headquartered in Tampa since 1994.',
     introHeading: 'Your Clearwater Roofing Company',
     intro: [
       'Quality Roofing serves Clearwater and the surrounding North Pinellas communities from our Tampa headquarters. Our work in the area includes Dunedin City Hall and the historic Belleview Biltmore in Belleair.',
@@ -135,7 +135,7 @@ export const markets: Market[] = [
     heroImage: '/assets/private-residence-metal-roof-aerial.webp',
     heroImageAlt: 'Aerial view of a metal roof on a Florida home by Quality Roofing',
     heroText:
-      'Residential, commercial, and multi-housing roofing for Riverview, from a third generation roofing company a short drive north in Tampa.',
+      'Residential, commercial, and multi-housing roofing for Riverview, from a roofing company a short drive north in Tampa.',
     introHeading: 'Your Riverview Roofing Company',
     intro: [
       'Riverview sits just south of our Tampa headquarters, and its neighborhoods are some of our closest residential work. Our project records include five residential reroofs in Riverview.',

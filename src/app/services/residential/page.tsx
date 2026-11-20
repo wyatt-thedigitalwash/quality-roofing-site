@@ -7,7 +7,7 @@ import PillarPageContent from '../_components/PillarPageContent';
 const NAME = 'Residential Roofing';
 const PATH = '/services/residential';
 const DESCRIPTION =
-  "Residential roofing in Tampa, FL and across Florida. Shingle, tile, slate, and standing seam metal roofs installed by a third generation certified roofer.";
+  "Residential roofing in Tampa, FL and across Florida. Shingle, tile, slate, and standing seam metal roofs installed by a state-certified roofer since 1994.";
 
 export const metadata: Metadata = pageMetadata({
   title: "Residential Roofing | Quality Roofing, Inc., Tampa FL",
@@ -34,7 +34,7 @@ export default function ResidentialPage() {
       overviewImageAlt="Overhead view of a private residence roof by Quality Roofing in Florida"
       overviewHeadline="A Roof Built to Protect Your Home"
         overviewParagraphs={[
-        'Your home is your most important investment, and the roof protecting it should be built to last. Quality Roofing has been serving Florida homeowners since 1994, delivering residential roofing solutions that combine premium materials with the craftsmanship that three generations of experience demand.',
+        'Your home is your most important investment, and the roof protecting it should be built to last. Quality Roofing has been serving Florida homeowners since 1994, delivering residential roofing solutions that combine premium materials with the craftsmanship that comes from over 30 years in the trade.',
         'Whether you are building a new home, replacing an aging roof, or need expert repairs, our team handles every project with the same attention to detail. We work directly with homeowners to explain options, recommend the right materials, and deliver results that exceed expectations.',
         'As certified installers for GAF, Owens Corning, and other top manufacturers, we offer the highest levels of warranty coverage available. The majority of our residential work comes through referrals, a reflection of the trust and satisfaction our homeowners experience.',
       ]}

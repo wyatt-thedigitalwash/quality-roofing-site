@@ -21,9 +21,9 @@ export const servicePillars = [
     description: 'Repairs, maintenance, roof assessments, and disaster restoration',
   },
   {
-    name: 'Standing Seam Metal',
-    href: '/services/standing-seam-metal',
-    description: 'Custom standing seam metal roofs for commercial and residential buildings',
+    name: 'Condominiums',
+    href: '/services/condominiums',
+    description: 'Condo associations, from garden-style communities to high-rise towers',
   },
 ];
 

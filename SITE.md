@@ -13,7 +13,7 @@
 - **Employees:** 100+
 - **Chief Executive Officer and Owner:** Richard C. Jenkins
 - **Licenses:** CCC042846 (Roofing) & CGC1507166 (General Contractor)
-- **Third generation licensed and state certified roofing and general contracting firm**
+- **Licensed and state certified roofing and general contracting firm** (client asked to drop all "third generation" wording, Nov 2026)
 - **Service Area:** Statewide -- Florida. Headquartered in Tampa but serves the entire state.
 
 ## Brand Colors
@@ -79,7 +79,6 @@
 - 30+ years in business
 - 100+ employees
 - Founded 1994
-- Third generation firm
 - Largest project exceeded $5 million
 - Annual sales volume exceeds $29 million
 
@@ -102,7 +101,7 @@
 - **Primary (statewide):** Florida roofing contractor, commercial roofing Florida, residential roofing Florida, roofing company Florida
 - **Regional:** Tampa roofing contractor, Tampa Bay commercial roofing, Central Florida roofing, South Florida roofing, Orlando roofing contractor, Jacksonville roofing contractor
 - **Service-specific:** multi-housing roofing Florida, roof repair Florida, GAF Master Elite roofer Florida, standing seam metal roof Florida, single ply roofing Florida, disaster restoration roofing Florida
-- **Trust/authority:** licensed roofing contractor Florida, certified roofing company Florida, third generation roofer Florida
+- **Trust/authority:** licensed roofing contractor Florida, certified roofing company Florida
 - Each service pillar page should target its own keyword cluster with both statewide and regional terms
 - The core site targets Tampa (headquarters). Other markets get their own service-area pages, which state that crews work from the Tampa headquarters
 - Search volume (Nov 2026, Florida): "roofer [city]" and "roofing company [city]" far outrank "roofing contractor [city]"

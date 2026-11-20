@@ -101,7 +101,7 @@ export default function MobileMenu({
               alt="Quality Roofing, Inc."
               width={75}
               height={48}
-              className="h-12 w-auto"
+              className="h-[72px] w-auto"
             />
           </Link>
           <button

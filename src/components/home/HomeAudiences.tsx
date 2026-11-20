@@ -23,7 +23,7 @@ const audiences = [
   },
   {
     name: 'Homeowners',
-    text: 'Manufacturer-certified installations and straightforward guidance, from a third generation roofing firm built on referrals.',
+    text: 'Manufacturer-certified installations and straightforward guidance, from a roofing firm built on referrals since 1994.',
     href: '/services/residential',
     link: 'Residential Roofing',
   },

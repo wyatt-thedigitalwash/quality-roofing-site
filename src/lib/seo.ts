@@ -59,7 +59,7 @@ export const businessSchema = {
   logo: `${SITE_URL}/assets/quality-roofing-logo-green-no-phone.svg`,
   image: `${SITE_URL}${DEFAULT_SHARE_IMAGE}`,
   description:
-    'Third generation licensed roofing and general contracting firm serving all of Florida from its Tampa headquarters.',
+    'Licensed, state-certified roofing and general contracting firm serving all of Florida from its Tampa headquarters since 1994.',
   telephone: '+1-813-620-4797',
   email: 'info@quality-roofing.com',
   faxNumber: '+1-813-626-1756',

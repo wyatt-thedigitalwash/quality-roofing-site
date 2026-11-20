@@ -58,7 +58,16 @@ function PageHero() {
 /* ──────────────────────────────────────────────
    SECTION 2 -- CERTIFIED MANUFACTURER PROFILES
    ────────────────────────────────────────────── */
-const certifiedPartners = [
+type CertifiedPartner = {
+  name: string;
+  certification: string;
+  /* Partners without a badge file yet show their name in the logo box instead */
+  logo?: string;
+  alt?: string;
+  description: string;
+};
+
+const certifiedPartners: CertifiedPartner[] = [
   {
     name: 'GAF',
     certification: 'Master Elite Contractor',
@@ -107,13 +116,19 @@ const certifiedPartners = [
     description:
       'Quality Roofing is a Certified SIKA Applicator, qualified to install SIKA Sarnafil single ply roofing membranes and liquid waterproofing systems. SIKA products are known for exceptional longevity and performance in commercial and institutional roofing applications.',
   },
+  {
+    name: 'Brava Roof Tile',
+    certification: 'Brava Certified Installer',
+    description:
+      'Quality Roofing is a Brava Certified Installer. Brava makes composite slate, shake, and Spanish barrel tile that captures the look of natural materials at a fraction of the weight, with strong impact and wind resistance for Florida conditions. Certified installation gives our clients access to Brava manufacturer warranty coverage.',
+  },
 ];
 
 function ManufacturerProfile({
   partner,
   index,
 }: {
-  partner: (typeof certifiedPartners)[number];
+  partner: CertifiedPartner;
   index: number;
 }) {
   const { ref, isVisible } = useScrollReveal(0.15);
@@ -125,13 +140,19 @@ function ManufacturerProfile({
       className={`flex items-center justify-center lg:col-span-2 ${anim(isVisible)}`}
     >
       <div className="flex items-center justify-center rounded-lg border border-[#E6E6E6] bg-white p-8 w-full aspect-[3/2]">
-        <Image
-          src={partner.logo}
-          alt={partner.alt}
-          width={240}
-          height={120}
-          className="h-20 w-auto object-contain"
-        />
+        {partner.logo ? (
+          <Image
+            src={partner.logo}
+            alt={partner.alt ?? `${partner.name} ${partner.certification}`}
+            width={240}
+            height={120}
+            className="h-20 w-auto object-contain"
+          />
+        ) : (
+          <span className="text-center text-3xl text-[#154D29] font-[family-name:var(--font-dm-serif)]">
+            {partner.name}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -214,21 +235,25 @@ function CertifiedProfiles() {
    SECTION 3 -- ADDITIONAL MANUFACTURERS
    ────────────────────────────────────────────── */
 const additionalManufacturers = [
-  'HeiTech Systems',
-  'Hanson',
-  'FiberTite',
-  'Fabral Metal Wall & Roof Systems',
-  'CMF Roof',
+  'ATAS',
+  'Berridge',
   'CertainTeed',
-  'ASI Building Products',
+  'Crown Roof Tiles',
+  'DaVinci Roofscapes',
   'Duro-Last',
-  'TAMKO Roofing Products',
-  'Soprema',
-  'Sealoflex Waterproofing Systems',
-  'Semule',
-  'Performance Roof Systems',
-  'MonierLifetile',
+  'Eagle Roofing Products',
+  'FiberTite',
+  'Gaco',
+  'Garland',
   'Ludowici Roof Tile',
+  'NB Handy',
+  'Petersen Aluminum (PAC-CLAD)',
+  'Santafé Tile',
+  'Soprema',
+  'Storm Seal',
+  'TAMKO Roofing Products',
+  'Tremco',
+  'Verea Clay Tile',
 ];
 
 function AdditionalManufacturers() {

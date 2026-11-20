@@ -14,7 +14,7 @@ const serviceLinks = [
   { name: 'Residential', href: '/services/residential' },
   { name: 'Multi-Housing', href: '/services/multi-housing' },
   { name: 'Repairs', href: '/services/repairs' },
-  { name: 'Standing Seam Metal', href: '/services/standing-seam-metal' },
+  { name: 'Condominiums', href: '/services/condominiums' },
 ];
 
 const areaLinks = [
@@ -31,6 +31,7 @@ const certifications = [
   'Owens Corning Preferred',
   'Polyglass Preferred',
   'Certified SIKA Applicator',
+  'Brava Certified Installer',
 ];
 
 export default function Footer() {
@@ -44,14 +45,14 @@ export default function Footer() {
               <Image
                 src="/assets/quality-roofing-logo-white-no-phone.svg"
                 alt="Quality Roofing, Inc."
-                width={125}
-                height={80}
-                className="h-20 w-auto"
+                width={150}
+                height={96}
+                className="h-24 w-auto"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
-              A third generation licensed and state certified roofing and general
-              contracting firm serving all of Florida since 1994.
+              A licensed and state certified roofing and general contracting
+              firm serving all of Florida since 1994.
             </p>
             <address className="mt-4 text-sm not-italic leading-relaxed text-[#E6E6E6] font-[family-name:var(--font-dm-sans)]">
               1905 N. 40th Street

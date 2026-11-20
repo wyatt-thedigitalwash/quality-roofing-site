@@ -36,7 +36,7 @@ export default function Header() {
       }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-10">
-        <div className={`relative flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-[64px]' : 'h-[96px]'}`}>
+        <div className={`relative flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-[76px]' : 'h-[120px]'}`}>
           {/* Logo */}
           <Link href="/" aria-label="Quality Roofing, Inc. home" className="shrink-0">
             <Image
@@ -44,7 +44,7 @@ export default function Header() {
               alt="Quality Roofing, Inc."
               width={75}
               height={48}
-              className={`w-auto transition-all duration-300 ${scrolled ? 'h-12' : 'h-16 md:h-[76px]'}`}
+              className={`w-auto transition-all duration-300 ${scrolled ? 'h-[60px]' : 'h-[84px] md:h-[100px]'}`}
               loading="eager"
             />
           </Link>

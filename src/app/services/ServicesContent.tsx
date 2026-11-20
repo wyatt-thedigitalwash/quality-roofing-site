@@ -74,7 +74,7 @@ const pillars = [
     image: '/assets/private-residence-metal-roof-aerial.webp',
     alt: 'Metal roof on a private residence by Quality Roofing in Florida',
     description:
-      'Protecting Florida homes with premium materials and craftsmanship built on three generations of experience. From custom builds to full replacements, we deliver manufacturer-certified installations with the highest warranty coverage available.',
+      'Protecting Florida homes with premium materials and craftsmanship built on over 30 years of experience. From custom builds to full replacements, we deliver manufacturer-certified installations with the highest warranty coverage available.',
     services: 'Shingle / Tile / Slate, Standing Seam Metal, New Construction, Roof Replacement, Repairs & Maintenance',
   },
   {
@@ -89,20 +89,20 @@ const pillars = [
   {
     name: 'Repairs',
     href: '/services/repairs',
-    image: '/assets/hutchinson-house-copper-dormers-fish-scale-slate.webp',
-    alt: 'Historical preservation roofing with copper dormers and fish scale slate at the Hutchinson House in Tampa by Quality Roofing',
+    image: '/assets/quality-roofing-crew-harness-roof-work.webp',
+    alt: 'Quality Roofing crew member in a hard hat and safety harness working on a roof repair',
     description:
       'Fast, reliable repair services and proactive maintenance programs to extend the life of your roof. Our team handles emergency storm damage, water intrusion, and specialized historical preservation work on landmark buildings.',
     services: 'Repairs & Maintenance, Roof Assessments, Disaster Restoration, Historical Preservation',
   },
   {
-    name: 'Standing Seam Metal',
-    href: '/services/standing-seam-metal',
-    image: '/assets/private-residence-metal-roof-front.webp',
-    alt: 'Private Florida residence with a metal roof by Quality Roofing',
+    name: 'Condominiums',
+    href: '/services/condominiums',
+    image: '/assets/skypoint-condos-high-rise-roof-aerial.webp',
+    alt: 'Skypoint Condos high-rise roof in Tampa by Quality Roofing',
     description:
-      'Custom standing seam metal roofing for commercial, residential, and multi-housing properties. Panels are formed with our own mobile roll former machines, backed by our experience in custom sheet metal fabrication.',
-    services: 'Custom Fabrication, New Construction, Roof Replacement, Historical Preservation, Seamless Gutters',
+      'Roofing for condominium associations, from garden-style communities to high-rise towers. We work directly with condo boards and association managers on assessments, budgeting, and phased schedules that keep the building running.',
+    services: 'Roof Replacement, High-Rise Roofing, Single Ply Systems, Shingle / Tile / Slate, Repairs & Maintenance, Roof Assessments',
   },
 ];
 

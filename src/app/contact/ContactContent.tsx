@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Phone, Mail, MapPin, Printer } from 'lucide-react';
 import { useScrollReveal } from '@/lib/animations';
 import PageHeroBackground from '@/components/PageHeroBackground';
@@ -92,10 +91,7 @@ function ContactInfo() {
           Service Area
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-[#252525]/70 font-[family-name:var(--font-dm-sans)]">
-          We serve the entire state of Florida from our Tampa headquarters, including{' '}
-          <Link href="/st-petersburg" className="font-semibold text-[#154D29] underline">St. Petersburg</Link>,{' '}
-          <Link href="/clearwater" className="font-semibold text-[#154D29] underline">Clearwater</Link>, and{' '}
-          <Link href="/riverview" className="font-semibold text-[#154D29] underline">Riverview</Link>.
+          We serve the entire state of Florida from our Tampa headquarters.
         </p>
       </div>
 

@@ -8,6 +8,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: 'weekly' | 'mon
   { path: '/services/residential', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/services/multi-housing', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/services/repairs', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/services/condominiums', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/services/standing-seam-metal', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/st-petersburg', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/clearwater', priority: 0.8, changeFrequency: 'monthly' },

@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 
 const TITLE = "Roofing Company | Quality Roofing, Inc., Tampa FL";
 const DESCRIPTION =
-  "Third generation Tampa roofing contractor serving all of Florida since 1994. Commercial, residential, multi-housing roofing, repairs, and free estimates.";
+  "Licensed Tampa roofing contractor serving all of Florida since 1994. Commercial, residential, multi-housing roofing, repairs, and free estimates.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -50,7 +50,7 @@ export default function RepairsPage() {
       projectsHeadline="Featured Repair & Restoration Projects"
       projects={[
         { label: 'The Hutchinson House', image: '/assets/hutchinson-house-slate-mansard-copper-dormer.webp', href: '/projects/hutchinson-house' },
-        { label: 'UT Plant Hall', image: '/assets/ut-plant-hall-aerial.webp' },
+        { label: 'Belleview Biltmore', image: '/assets/belleview-biltmore-roof-aerial.webp' },
         { label: 'Gulfview Resort Towers', image: '/assets/gulfview-resort-towers.webp' },
       ]}
       faqs={repairsFaqs}

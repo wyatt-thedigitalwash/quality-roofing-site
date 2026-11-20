@@ -15,7 +15,7 @@ const SERVICES = [
   { name: 'Residential Roofing', href: '/services/residential', text: 'Shingle, tile, slate, and metal roofs for homes.' },
   { name: 'Multi-Housing Roofing', href: '/services/multi-housing', text: 'Apartments, condominiums, and HOA communities.' },
   { name: 'Roof Repairs & Restoration', href: '/services/repairs', text: 'Repairs, maintenance, and storm restoration.' },
-  { name: 'Standing Seam Metal', href: '/services/standing-seam-metal', text: 'Custom metal roofs formed by our own crews.' },
+  { name: 'Condominium Roofing', href: '/services/condominiums', text: 'Condo associations, from garden-style to high-rise.' },
 ];
 
 const h2 = 'text-[clamp(1.75rem,4vw,2.625rem)] leading-[1.15] font-normal text-[#252525] font-[family-name:var(--font-dm-serif)]';

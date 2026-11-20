@@ -17,7 +17,7 @@ const services = [
     href: '/services/residential',
     image: '/assets/private-residence-metal-roof-aerial.webp',
     alt: 'Aerial view of a metal roof on a private Florida residence',
-    text: 'Premium materials and three generations of craftsmanship for custom builds and full replacements on Florida homes.',
+    text: 'Premium materials and over 30 years of craftsmanship for custom builds and full replacements on Florida homes.',
     items: ['Shingle / Tile / Slate', 'Standing Seam Metal', 'New Construction', 'Roof Replacement'],
   },
   {
@@ -48,11 +48,7 @@ export default function HomeServices() {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#252525]/70">
             From our Tampa headquarters, we handle every phase of roofing for commercial,
-            residential, and multi-housing properties in{' '}
-            <Link href="/st-petersburg" className="font-semibold text-[#154D29] underline">St. Petersburg</Link>,{' '}
-            <Link href="/clearwater" className="font-semibold text-[#154D29] underline">Clearwater</Link>,{' '}
-            <Link href="/riverview" className="font-semibold text-[#154D29] underline">Riverview</Link>, and across
-            the entire state of Florida.
+            residential, and multi-housing properties across Florida.
           </p>
         </Reveal>
 
@@ -110,15 +106,15 @@ export default function HomeServices() {
           <div className="flex flex-col gap-6 rounded-lg bg-[#E6E6E6]/40 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h3 className="text-2xl font-normal text-[#252525] font-[family-name:var(--font-dm-serif)]">
-                Also Offering Standing Seam Metal
+                Also Serving Condominium Associations
               </h3>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#252525]/70">
-                Custom standing seam roofs for any property type, formed with our own mobile roll former
-                machines.
+                Roof replacement, repairs, and maintenance for condo communities, from garden-style
+                buildings to high-rise towers.
               </p>
             </div>
-            <Link href="/services/standing-seam-metal" className={`shrink-0 self-start lg:self-center ${outlineButton}`}>
-              Learn About Standing Seam
+            <Link href="/services/condominiums" className={`shrink-0 self-start lg:self-center ${outlineButton}`}>
+              Condominium Roofing
             </Link>
           </div>
         </Reveal>

@@ -14,8 +14,10 @@ const anim = (visible: boolean) =>
   }`;
 
 /* ──────────────────────────────────────────────
-   Project data — derived from public/assets
+   Project data, shown in alphabetical order (a leading "The" is ignored)
    ────────────────────────────────────────────── */
+const sortKey = (name: string) => name.replace(/^The /, '');
+
 const projects = [
   { src: '/assets/belleview-biltmore-commercial-roofing-project.webp', name: 'Belleview Biltmore' },
   { src: '/assets/belleview-biltmore-roof-aerial.webp', name: 'Belleview Biltmore Aerial' },
@@ -24,11 +26,10 @@ const projects = [
   { src: '/assets/345-bayshore-highrise-roofing-tampa.webp', name: '345 Bayshore' },
   { src: '/assets/city-center-at-hanna-roofing-aerial.webp', name: 'City Center at Hanna' },
   { src: '/assets/dunedin-city-hall-roofing-aerial.webp', name: 'Dunedin City Hall' },
-  { src: '/assets/harbour-court-standing-seam-metal-roof-aerial.webp', name: 'Harbour Court' },
   { src: '/assets/camden-bay-multi-housing-roofing-aerial.webp', name: 'Camden Bay' },
   { src: '/assets/sparkman-wharf-commercial-roofing-tampa.webp', name: 'Sparkman Wharf' },
   { src: '/assets/harbour-court-condos-roofing-aerial.webp', name: 'Harbour Court Condos' },
-  { src: '/assets/multi-housing-tile-roof-community-aerial.webp', name: 'Multi-Housing Community' },
+  { src: '/assets/multi-housing-tile-roof-community-aerial.webp', name: 'The Landings at Boot Ranch' },
   { src: '/assets/crystal-bay-multi-housing-roofing-aerial.webp', name: 'Crystal Bay' },
   { src: '/assets/multi-housing-townhomes-roof-aerial.webp', name: 'Multi-Housing Townhomes' },
   { src: '/assets/new-life-village-roofing-aerial.webp', name: 'New Life Village' },
@@ -55,8 +56,7 @@ const projects = [
   { src: '/assets/private-residence-brick-home.webp', name: 'Private Residence IV' },
   { src: '/assets/private-residence-stone-home.webp', name: 'Private Residence V' },
   { src: '/assets/private-residence-roof-aerial.webp', name: 'Private Residence VI' },
-  { src: '/assets/ut-plant-hall-aerial.webp', name: 'UT Plant Hall' },
-];
+].sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name), 'en', { numeric: true }));
 
 /* ──────────────────────────────────────────────
    SECTION 1 -- PAGE HERO
