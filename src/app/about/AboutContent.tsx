@@ -26,7 +26,7 @@ function PageHero() {
   return (
     <section aria-label="Three Decades of Roofing Excellence"
       ref={ref}
-      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] pb-24"
+      className="relative flex items-center min-h-[55vh] lg:min-h-[70vh] bg-[#252525] px-4 sm:px-6 lg:px-8 pt-[96px] md:pt-[124px] pb-24"
     >
       <PageHeroBackground
         src="/assets/ut-multipurpose-roofing-aerial-tampa.webp"

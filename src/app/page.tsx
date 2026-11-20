@@ -36,7 +36,7 @@ function Hero() {
     <section aria-label="Florida's Trusted Roofing Contractor Since 1994"
       ref={ref}
       data-bg="dark"
-      className="relative flex flex-1 items-center bg-[#252525] px-4 pt-[120px] pb-20 sm:px-6 lg:px-8"
+      className="relative flex flex-1 items-center bg-[#252525] px-4 pt-[120px] md:pt-[148px] pb-20 sm:px-6 lg:px-8"
     >
       {/* Full-bleed video behind the text at every width */}
       <div className="absolute inset-0 overflow-hidden">

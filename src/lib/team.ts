@@ -19,7 +19,7 @@ export const team: TeamMember[] = [
   { name: 'Caleb Ingram', title: 'Project Manager', since: 2026, photo: photo('caleb-ingram') },
   { name: 'Ken Davis', title: 'Estimator', photo: photo('ken-davis') },
   { name: 'Jorge Rodriguez', title: 'Estimator', since: 2025, photo: photo('jorge-rodriguez') },
-  { name: 'Ehsan Siddiqui', title: 'Sales Representative' },
+  { name: 'Ehsan Siddiqui', title: 'Sales Representative', photo: photo('ehsan-siddiqui') },
   { name: 'Haley Novak', title: 'Accounts Payable Specialist', since: 2018, photo: photo('haley-novak') },
   { name: 'Jennifer Palamonka', title: 'Contract and Billing Administrator', since: 2025, photo: photo('jennifer-palamonka') },
   { name: 'Juan Hernandez', title: 'CDL Driver', photo: photo('juan-hernandez') },

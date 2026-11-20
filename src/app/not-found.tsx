@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section aria-label="Page Not Found" className="flex min-h-[80vh] items-center bg-[#252525] px-4 pt-[96px] pb-24 sm:px-6 lg:px-8">
+    <section aria-label="Page Not Found" className="flex min-h-[80vh] items-center bg-[#252525] px-4 pt-[96px] md:pt-[124px] pb-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
           <h1 className="text-[clamp(2.25rem,4.5vw,3.75rem)] font-normal leading-[1.1] text-white font-[family-name:var(--font-dm-serif)]">

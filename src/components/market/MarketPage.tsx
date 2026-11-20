@@ -39,7 +39,7 @@ export default function MarketPage({ market }: { market: Market }) {
         }}
       />
 
-      <section aria-label={`Roofing Company in ${market.city}, FL`} className="relative flex min-h-[55vh] items-center bg-[#252525] px-4 pt-[96px] pb-24 sm:px-6 lg:min-h-[70vh] lg:px-8">
+      <section aria-label={`Roofing Company in ${market.city}, FL`} className="relative flex min-h-[55vh] items-center bg-[#252525] px-4 pt-[96px] md:pt-[124px] pb-24 sm:px-6 lg:min-h-[70vh] lg:px-8">
         <PageHeroBackground src={market.heroImage} alt={market.heroImageAlt} />
         <div className="relative z-10 mx-auto w-full max-w-7xl">
           <Reveal className="max-w-2xl">
